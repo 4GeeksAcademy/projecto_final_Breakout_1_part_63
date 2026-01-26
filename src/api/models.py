@@ -97,5 +97,8 @@ class Reading(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "email": self.email,
+            "titte": self.title,
+            "content": self.content,
+            "teacher_id": self.teacher_id,
+            "group_id": self.group_id
         }
