@@ -6,7 +6,7 @@ from flask import Flask, request, jsonify, url_for, send_from_directory
 from flask_migrate import Migrate
 from flask_swagger import swagger
 from api.utils import APIException, generate_sitemap
-from api.models import Students_Group, Group, Todo, Submission, Status, User
+from api.models import Students_Group, Group, Todo, Submission, Status, User, Reading
 from api.models import db
 from api.routes import api
 from api.admin import setup_admin
@@ -94,6 +94,64 @@ def serve_any_other_file(path):
 def prueba():
     users = User.query.all()
     return jsonify([user.serialize() for user in users]), 200
+#MOSTRAR LECTURAS 
+@app.route('/readings', methods=['GET'])
+def get_all_readings():
+    readings = Reading.query.all()
+    readings_serialized = []
+    for reading in readings:
+        readings_serialized.append(reading.serialize())
+    return ({'Tus lecturas pendientes': readings})
+
+#CREAR LECTURAS POR PROFESOR 
+@app.route('/readings/create', methods=['POST'])
+def create_new_reading():
+    body = request.get_json(silent=True)
+    if body is None:
+        return jsonify({'msg': 'Necesitas llenar el body'}),400
+    if 'title' not in body:
+        return jsonify({'msg': 'Necesitas poner un titulo a la lectura'}),400
+    if 'content' not in body:
+        return jsonify({'msg': 'Necesitas agregar contenido'}),400
+    new_reading = Reading()
+    new_reading.title = body['title']
+    new_reading.content = body['content']
+    db.session.add(new_reading)
+    db.session.commit()
+
+    return jsonify({'msg': f'lectura {new_reading.title}agregada'})
+
+
+
+#MODIFICAR LECTURA
+@app.route('/editreading/<int:reading_id>', methods=['PUT'])  
+def edit_reading(reading_id):
+    reading = Reading.query.get(reading_id)
+    if reading is None:
+        return jsonify({'msg': f'Lectura {reading_id} no encontrada'}), 404
+
+    body = request.get_json(silent=True)
+    if 'title' in body:
+        reading.title = body['title']
+    if 'content' in body:
+        reading.content = body['content']
+    db.session.commit()
+
+    return jsonify({'msg': f'Lectura {reading.name} actualizada'}),200
+
+#ELIMINAR READING 
+        
+@app.route('deletereading/<int:reading_id>', methods=['DELETE'])
+def delete_reading(reading_id):
+    reading = Reading.query.get(reading_id)
+    if reading is None:
+        return jsonify({'msg': f'Lectura {reading_id} no encontrada'}), 404
+   
+    db.session.delete(reading)
+    db.session.commit()
+
+    return jsonify(f'Se ha eliminado correctamente la lectura {reading.title} '), 200   
+
 
 #                  ENDPOINT REGISTER
 

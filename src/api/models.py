@@ -141,11 +141,17 @@ class Reading(db.Model):
     teacher: Mapped["User"] = relationship(back_populates='readings')
     group_id: Mapped[int] = mapped_column(ForeignKey('group.id'), nullable=False)
     group: Mapped["Group"] = relationship(back_populates='readings')
+
+    def __repr__(self):
+        return f'Lectura: {self.title}'
+
     def serialize(self):
         return {
             "id": self.id,
             "title": self.title,
             "content": self.content,
-            "teacher_id": self.teacher_id,
-            "group_id": self.group_id
+            "La asigno el profesor": self.teacher,
+            "Grupo asignado": self.group
         }
+    
+
