@@ -368,7 +368,7 @@ if __name__ == '__main__':
     app.run(host='0.0.0.0', port=PORT, debug=True)
 
 
-@app.route('/register-staff', methods=['POST'])
+@app.route('/register/staff', methods=['POST'])
 def register_staff():
     body = request.get_json(silent=True)
     if body is None:

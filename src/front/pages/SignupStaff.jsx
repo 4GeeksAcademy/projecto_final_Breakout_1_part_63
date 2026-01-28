@@ -17,21 +17,12 @@ export const SignupStaff = () => {
     setErr(null);
 
     try {
-      const backend = import.meta.env.VITE_BACKEND_URL;
-
-      const resp = await fetch(`${backend}/register-staff`, {
+      const resp = await fetch("https://humble-tribble-5gp74r6w9wvxf5gv-3001.app.github.dev/register/staff", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-          email,
-          password,
-          role
-        }),
+        body: JSON.stringify({ name, email, password, role }),
       });
-
       const data = await resp.json();
-
       if (!resp.ok) {
         throw new Error(data.msg || "Error de registro");
       }
