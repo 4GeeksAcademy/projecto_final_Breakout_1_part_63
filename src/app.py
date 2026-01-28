@@ -141,7 +141,7 @@ def edit_reading(reading_id):
 
 #ELIMINAR READING 
         
-@app.route('deletereading/<int:reading_id>', methods=['DELETE'])
+@app.route('/deletereading/<int:reading_id>', methods=['DELETE'])
 def delete_reading(reading_id):
     reading = Reading.query.get(reading_id)
     if reading is None:
