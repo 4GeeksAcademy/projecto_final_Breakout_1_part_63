@@ -748,6 +748,9 @@ def register_staff():
 
 
 @app.route('/todos-creation', methods=['POST'])
+@jwt_required()
+@role_required("TEACHER", "ADMIN")
+
 def create_todo():
     body = request.get_json(silent=True)
     if body is None:
@@ -764,18 +767,24 @@ def create_todo():
         return jsonify({"msg": "El campo group_id no puede estar vacío"}), 400
     if 'student_id' not in body:
         return jsonify({"msg": "El campo student_id no puede estar vacío"}), 400
+   
+    teacher_id = identity["user_id"] if isinstance(identity,dict) else identity
+   
     new_todo = Todo(
         title=body['title'],
         description=body['description'],
         due_date=body['due_date'],
-        teacher_id=body['teacher_id'],
+        teacher_id=teacher_id,
         group_id=body['group_id'],
-        student_id=body['student_id']
+        student_id=body('student_id')
        
     )
     db.session.add(new_todo)
     db.session.commit()
-    return jsonify({"msg": "Todo created successfully"}), 201
+    return jsonify({
+        "msg": "Todo created successfully",
+        "todo_id": new_todo.id
+    }), 201
 
 
 @app.route('/todos', methods=['GET'])

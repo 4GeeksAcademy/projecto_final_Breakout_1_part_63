@@ -31,6 +31,7 @@ export const CreateTodoForm = () => {
         const token = localStorage.getItem("token");
 
         if (!token) throw new Error("No hay token");
+      
 
         const resp = await fetch(`${backend}/groups`, {
 
@@ -77,8 +78,8 @@ export const CreateTodoForm = () => {
         description,
         due_date: dueDate,
         group_id: Number(group),
-        teacher_id: Number(teacher),
-        student_id: Number(student),
+       teacher_id: Number(teacher),
+       student_id: Number(student),
 
       };
 
@@ -88,7 +89,7 @@ export const CreateTodoForm = () => {
       const headers = {
 
         "Content-Type": "application/json",
-
+        Authorization: `Bearer ${token}`,
 
       };
 
