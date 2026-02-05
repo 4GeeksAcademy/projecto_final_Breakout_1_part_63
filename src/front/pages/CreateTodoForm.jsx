@@ -30,7 +30,7 @@ export const CreateTodoForm = () => {
         const backend = import.meta.env.VITE_BACKEND_URL;
         const token = localStorage.getItem("token");
 
-        if (!token) throw new Error("No hay token");
+    //    if (!token) throw new Error("No hay token");
       
 
         const resp = await fetch(`${backend}/groups`, {
@@ -209,7 +209,7 @@ export const CreateTodoForm = () => {
                   </div>
 
 
-                  <div className="mb-5">
+   {/*              <div className="mb-5">
                     <label htmlFor="grupo" className="form-label">Grupos:</label>
                     <select className="form-select" aria-label="Default select example" value={group} onChange={(e) => setGroup(e.target.value)}>
                       <option value="">Seleccionar el grupo</option>
@@ -224,7 +224,7 @@ export const CreateTodoForm = () => {
 
                     </select>
 
-                  </div>
+                  </div> */}
 
                   <div className="mb-3">
                     <label htmlFor="exampleFormControlTextarea1" className="form-label">Agregar descripción de tarea</label>
