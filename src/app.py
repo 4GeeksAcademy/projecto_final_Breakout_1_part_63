@@ -748,8 +748,8 @@ def register_staff():
 
 
 @app.route('/todos-creation', methods=['POST'])
-@jwt_required()
-@role_required("TEACHER", "ADMIN")
+# @jwt_required()
+# @role_required("TEACHER", "ADMIN")
 
 def create_todo():
     body = request.get_json(silent=True)
