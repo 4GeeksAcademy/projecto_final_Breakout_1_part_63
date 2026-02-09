@@ -33,6 +33,33 @@ export const HomeTeacher = () => {
         fetchTodos();
     }, [dispatch]);
 
+    useEffect(() => {
+            const fetchMe = async () => {
+                try {
+                    const backend = import.meta.env.VITE_BACKEND_URL;
+                    const resp = await fetch(`${backend}/me`, {
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${localStorage.getItem("token")}`,
+                        },
+                    });
+    
+                    if (!resp.ok) throw new Error("Error obteniendo usuario");
+    
+                    const data = await resp.json();
+    
+                    dispatch({
+                        type: "SET_CURRENT_USER",
+                        payload: data,
+                    });
+                } catch (error) {
+                    console.error("Error fetching current user:", error);
+                }
+            };
+    
+            fetchMe();
+        }, [dispatch]);
+
     const fetchReadings = async () => {
         try {
             const backend = import.meta.env.VITE_BACKEND_URL;
@@ -66,7 +93,7 @@ export const HomeTeacher = () => {
                     <div className="row align-items-center">
                         <div className="col-md-6">
                             <h1 className="display-5 fw-bold mb-4 g-color">
-                                Bienvenido PROFESOR
+                                Bienvenido  <span className="text-primary">{store.user?.name || "Profesor"}</span>
                             </h1>
                             <p className="fs-5">
                                 Aquí podrás gestionar las tarea y lecturas de tus estudiantes de manera eficiente y organizada.
