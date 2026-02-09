@@ -77,7 +77,7 @@ class Todo(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
     title: Mapped[str] = mapped_column(String(100), nullable=False)
     description: Mapped[str] = mapped_column(String(255))
-    archive_url: Mapped[str] = mapped_column(String(500))
+    archive_url: Mapped[str] = mapped_column(String(500),)
     due_date: Mapped[Date] = mapped_column(Date, nullable=False)
     teacher_id: Mapped[int] = mapped_column(ForeignKey('user.id'), nullable=False)
     teacher: Mapped["User"] = relationship(back_populates='todos')

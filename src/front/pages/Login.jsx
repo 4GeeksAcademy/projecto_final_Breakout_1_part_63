@@ -31,6 +31,8 @@ export const Login = () => {
             }
             localStorage.setItem("token", data.access_token);
             localStorage.setItem("role", data.role);
+            localStorage.setItem("user_name", data.user?.name || "");
+            localStorage.setItem("user_id", String(data.user?.id || ""));
 
             console.log("GUARDADO:", {
                 token: localStorage.getItem("token"),

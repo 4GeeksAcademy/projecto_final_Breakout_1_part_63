@@ -111,33 +111,40 @@ export const HomeTeacher = () => {
                 </div>
             </div>
 
-            <div className="container mt-5">
-                <h2 className="fw-bold mb-4">Tareas asignadas</h2>
-
-                {todos.length === 0 && (
-                    <p>No hay tareas creadas</p>
-                )}
-
-                <div className="d-flex gap-3 overflow-auto px-3 pb-3">
-                    {todos.map(todo => (
-                        <TodoCard key={todo.id} todo={todo} />
-                    ))}
-                </div>
+            <div className="col-md-6 text-center my-3">
+              <img
+                src="https://fastly.picsum.photos/id/3/5000/3333.jpg?hmac=GDjZ2uNWE3V59PkdDaOzTOuV3tPWWxJSf4fNcxu4S2g"
+                className="img-fluid rounded-5"
+                alt="novedades"
+              />
             </div>
-
-            <div className="container mt-5">
-                <h2 className="fw-bold mb-4">lecturas creadas</h2>
-
-                {store.readings.length === 0 && (
-                    <p>No hay lecturas creadas</p>
-                )}
-
-                <div className="d-flex gap-3 overflow-auto px-3 pb-3">
-                    {store.readings.map(reading => (
-                        <ReadingCards key={reading.id} reading={reading} />
-                    ))}
-                </div>
-            </div>
+          </div>
         </div>
-    );
+      </div>
+
+      <div className="container mt-5">
+        <h2 className="fw-bold mb-4">Tareas asignadas</h2>
+
+        {todos.length === 0 && <p>No hay tareas creadas</p>}
+
+        <div className="d-flex gap-3 overflow-auto px-3 pb-3">
+          {todos.map((todo) => (
+            <TodoCard key={todo.id} todo={todo} />
+          ))}
+        </div>
+      </div>
+
+      <div className="container mt-5">
+        <h2 className="fw-bold mb-4">Lecturas creadas</h2>
+
+        {store.readings.length === 0 && <p>No hay lecturas creadas</p>}
+
+        <div className="d-flex gap-3 overflow-auto px-3 pb-3">
+          {store.readings.map((reading) => (
+            <ReadingCards key={reading.id} reading={reading} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 };

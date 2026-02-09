@@ -1,5 +1,5 @@
 .g-color-bg {
-  background-color: #5B72EE;
+  background-color: #5b72ee;
 }
 
 .hero-image {
@@ -117,17 +117,17 @@
   background: rgba(228, 184, 181, 0.65);
 }
 
-.main-right{
+.main-right {
   min-height: 100vh;
   background: var(--bg-soft);
 }
 
-.main-header{
+.main-header {
   background: transparent;
   padding: 18px 18px 0;
 }
 
-.main-header-inner{
+.main-header-inner {
   max-width: 945px;
   background: var(--c-teal);
   color: #fff;
@@ -136,12 +136,12 @@
   box-shadow: var(--shadow-soft);
 }
 
-.header-title{
+.header-title {
   font-weight: 900;
   margin: 0;
 }
 
-.header-subtitle{
+.header-subtitle {
   opacity: 0.9;
   font-weight: 600;
 }
@@ -228,17 +228,408 @@
     padding: 16px;
   }
 }
-.v-color{
-  color: #00CBB8;
+.v-color {
+  color: #00cbb8;
 }
 
 .card-text {
   display: -webkit-box;
-  -webkit-line-clamp: 6; 
+  -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-.hero-home{
-  background-color: #9DCCFF;
+.hero-home {
+  background-color: #9dccff;
+}
+
+.page-teacher-todos {
+  background: var(--bg-soft);
+  min-height: 100vh;
+}
+
+.ctf-shell {
+  max-width: 1100px;
+}
+
+.ctf-header {
+  background: rgba(73, 187, 189, 0.18);
+  border: 1px solid rgba(37, 38, 65, 0.08);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-soft);
+  padding: 18px 18px 14px;
+}
+
+.ctf-header h1 {
+  margin: 0;
+  color: var(--c-navy);
+  font-weight: 900;
+}
+
+.ctf-header p {
+  margin: 6px 0 0;
+  color: rgba(37, 38, 65, 0.75);
+  font-weight: 600;
+}
+
+.ctf-panel {
+  border: 0;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+.ctf-panel .card-body {
+  padding: 22px;
+}
+
+.ctf-label {
+  color: var(--c-navy);
+  font-weight: 800;
+}
+
+.ctf-input,
+.ctf-textarea,
+.ctf-select {
+  border-radius: 12px !important;
+  border: 1px solid rgba(37, 38, 65, 0.16) !important;
+  box-shadow: none !important;
+}
+
+.ctf-input:focus,
+.ctf-textarea:focus,
+.ctf-select:focus {
+  border-color: rgba(73, 187, 189, 0.7) !important;
+  box-shadow: 0 0 0 0.2rem rgba(73, 187, 189, 0.18) !important;
+}
+
+.ctf-help {
+  color: rgba(37, 38, 65, 0.65);
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.ctf-side {
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-soft);
+  background: #fff;
+  border: 1px solid rgba(37, 38, 65, 0.08);
+  padding: 16px;
+}
+
+.ctf-side-title {
+  color: var(--c-navy);
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.ctf-list {
+  max-height: 520px;
+  overflow: auto;
+  padding-right: 6px;
+}
+
+.ctf-student-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(37, 38, 65, 0.08);
+  box-shadow: var(--shadow-mini);
+  background: rgba(41, 185, 231, 0.08);
+}
+
+.ctf-student-item + .ctf-student-item {
+  margin-top: 10px;
+}
+
+.ctf-badge {
+  font-weight: 800;
+  color: var(--c-navy);
+  background: rgba(230, 196, 156, 0.55);
+  border: 1px solid rgba(37, 38, 65, 0.08);
+  border-radius: 999px;
+  padding: 6px 10px;
+  white-space: nowrap;
+}
+
+.ctf-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.ctf-btn-primary {
+  background: var(--c-teal) !important;
+  border-color: var(--c-teal) !important;
+  color: #fff !important;
+  border-radius: 12px !important;
+  font-weight: 900 !important;
+  padding: 10px 16px !important;
+}
+
+.ctf-btn-primary:disabled {
+  opacity: 0.7;
+}
+
+.ctf-btn-ghost {
+  border-radius: 12px !important;
+  font-weight: 800 !important;
+}
+
+@media (max-width: 991.98px) {
+  .ctf-header {
+    padding: 14px 14px 12px;
+  }
+  .ctf-panel .card-body {
+    padding: 16px;
+  }
+  .ctf-list {
+    max-height: 280px;
+  }
+}
+
+.ctf-page {
+  background: var(--bg-soft);
+  min-height: 100vh;
+}
+
+.ctf-header {
+  background: rgba(73, 187, 189, 0.18);
+  border: 1px solid rgba(37, 38, 65, 0.08);
+  box-shadow: var(--shadow-soft);
+}
+
+.ctf-title {
+  color: var(--c-navy);
+  font-weight: 900;
+}
+
+.ctf-subtitle {
+  color: rgba(37, 38, 65, 0.75);
+  font-weight: 600;
+}
+
+.ctf-badge {
+  background: rgba(230, 196, 156, 0.55);
+  border: 1px solid rgba(37, 38, 65, 0.08);
+  color: var(--c-navy);
+  font-weight: 800;
+}
+
+.ctf-card {
+  background: #fff;
+  border: 1px solid rgba(37, 38, 65, 0.08);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+.ctf-card-head {
+  padding: 16px 18px;
+  background: rgba(41, 185, 231, 0.1);
+  border-bottom: 1px solid rgba(37, 38, 65, 0.08);
+  color: var(--c-navy);
+}
+
+.ctf-card-foot {
+  border-top: 1px solid rgba(37, 38, 65, 0.08);
+  background: rgba(37, 38, 65, 0.03);
+}
+
+.ctf-label {
+  color: var(--c-navy);
+  font-weight: 800;
+}
+
+.ctf-input {
+  border-radius: 12px !important;
+  border: 1px solid rgba(37, 38, 65, 0.16) !important;
+  box-shadow: none !important;
+}
+
+.ctf-input:focus {
+  border-color: rgba(73, 187, 189, 0.7) !important;
+  box-shadow: 0 0 0 0.2rem rgba(73, 187, 189, 0.18) !important;
+}
+
+.ctf-list {
+  max-height: 520px;
+  overflow: auto;
+  padding-right: 6px;
+}
+
+.ctf-student {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(37, 38, 65, 0.08);
+  box-shadow: var(--shadow-mini);
+  background: rgba(41, 185, 231, 0.08);
+}
+
+.ctf-student + .ctf-student {
+  margin-top: 10px;
+}
+
+.ctf-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  color: #fff;
+  background: var(--c-blue);
+  flex: 0 0 auto;
+}
+
+.ctf-student-name {
+  font-weight: 900;
+  color: var(--c-navy);
+  line-height: 1.1;
+}
+
+.ctf-student-email {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(37, 38, 65, 0.7);
+}
+
+.ctf-upload-box {
+  border: 1px dashed rgba(37, 38, 65, 0.25);
+  border-radius: 14px;
+  padding: 14px;
+  background: rgba(230, 196, 156, 0.15);
+}
+
+.ctf-btn-primary {
+  background: var(--c-teal) !important;
+  border-color: var(--c-teal) !important;
+  color: #fff !important;
+  border-radius: 12px !important;
+  font-weight: 900 !important;
+  padding: 10px 16px !important;
+}
+
+.ctf-btn-primary:hover {
+  filter: brightness(0.97);
+}
+
+@media (max-width: 991.98px) {
+  .ctf-list {
+    max-height: 280px;
+  }
+}
+
+.page-teacher-todos {
+  background: var(--bg-soft);
+  min-height: 100vh;
+}
+
+.page-teacher-todos .sidebar-left {
+  background: #fff;
+  border-right: 1px solid rgba(37, 38, 65, 0.1);
+  min-height: 100vh;
+}
+
+.page-teacher-todos .sidebar-inner {
+  padding: 18px 16px;
+}
+
+.page-teacher-todos .sidebar-title {
+  color: var(--c-navy);
+  font-weight: 800;
+}
+
+.page-teacher-todos .section-title {
+  color: var(--c-navy);
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.page-teacher-todos .tiles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 6px;
+}
+
+.page-teacher-todos .tile {
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-weight: 700;
+  color: var(--c-navy);
+  box-shadow: var(--shadow-mini);
+  border: 1px solid rgba(37, 38, 65, 0.06);
+  text-align: left;
+}
+
+.page-teacher-todos .tile-soft {
+  font-weight: 700;
+}
+
+.page-teacher-todos .tile-selected {
+  outline: 3px solid rgba(73, 187, 189, 0.25);
+}
+
+.main-header-inner--todo {
+  max-width: 980px; 
+  width: 100%;
+  margin-left: 0; 
+  background: var(--c-teal);
+  color: #fff;
+  padding: 22px 22px 18px;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-soft);
+}
+
+.main-content--todo {
+  max-width: 980px;
+  padding: 18px 18px 30px;
+}
+
+.page-teacher-todos .ctf-input {
+  border-radius: 12px !important;
+  border: 1px solid rgba(37, 38, 65, 0.16) !important;
+  box-shadow: none !important;
+}
+
+.page-teacher-todos .ctf-input:focus {
+  border-color: rgba(73, 187, 189, 0.7) !important;
+  box-shadow: 0 0 0 0.2rem rgba(73, 187, 189, 0.18) !important;
+}
+
+.page-teacher-todos .btn-create {
+  background: var(--c-teal);
+  border-color: var(--c-teal);
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-weight: 900;
+  color: #fff;
+}
+
+.page-teacher-todos .btn-create:hover {
+  filter: brightness(0.97);
+}
+
+@media (max-width: 991.98px) {
+  .page-teacher-todos .sidebar-left {
+    border-right: none;
+    border-bottom: 1px solid rgba(37, 38, 65, 0.1);
+    min-height: auto;
+  }
+
+  .main-content--todo {
+    padding: 14px;
+  }
+
+  .main-header-inner--todo {
+    margin: 0;
+  }
 }
