@@ -163,8 +163,8 @@ class Reading(db.Model):
             "title": self.title,
             "content": self.content,
             "reading_url": self.reading_url,
-            "La asigno el profesor": self.teacher_id,
-            "Grupo asignado": self.group_id
+            "teacher_id": self.teacher_id,
+            "group_id": self.group_id
         }
     
 

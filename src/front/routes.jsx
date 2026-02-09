@@ -15,7 +15,7 @@ import { CreateTodoForm } from "./pages/CreateTodoForm";
 import { SignupStaff } from "./pages/SignupStaff";
 import { CreateReadings } from "./pages/CreateReadings";
 import { HomeStudent } from "./pages/homeStudent";
-import { ReadingsViewStudents } from "./pages/ReadingsViewStudents.jsx";
+import { StudentViewReadings } from "./pages/StudentViewReadings.jsx";
 import { IndividualReadingViewStudent } from "./pages/IndividualReadingViewStudent.jsx";
 import { HomeTeacher } from "./pages/HomeTeacher.jsx";
 import { HomeAdmin } from "./pages/HomeAdmin.jsx";
@@ -24,6 +24,7 @@ import { IndividualTodoViewStudent } from "./pages/IndividualTodoViewStudent.jsx
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { TodoViewStudent } from "./pages/TodoViewStudent.jsx";
 import { CreateGroupsAdmin } from "./pages/CreateGroupsAdmin";
+import { TeacherViewReadings } from "./pages/TeacherViewReadings";
 import { TodoDetailTeacher } from "./pages/TodoDetailTeacher.jsx";
 
 
@@ -50,10 +51,10 @@ export const router = createBrowserRouter(
       <Route path="/signup-staff" element={<SignupStaff />} />
       <Route path="/readings-create" element={<CreateReadings />} />
       <Route path="/homeStudent" element={<HomeStudent />} />
-      <Route path="/readings/student" element={<ReadingsViewStudents />} />
+      <Route path="/readings/student" element={<StudentViewReadings />} />
       <Route path="/reading/:id" element={<IndividualReadingViewStudent />} />
+      <Route path="/teacher/readings" element={<TeacherViewReadings />} />
       <Route path="/todos/:id" element={<IndividualTodoViewStudent />} />
-      <Route path="/readings" element={<ReadingsViewStudents />} />
       <Route path="/todoviewstudent" element={<TodoViewStudent />} />
       <Route path="/homeStudent" element={<ProtectedRoute allowedRoles={["STUDENT"]}> <HomeStudent /> </ProtectedRoute>} />
       <Route path="/admin/groups" element={<ProtectedRoute allowedRoles={["ADMIN"]}> <CreateGroupsAdmin /> </ProtectedRoute>}/>
