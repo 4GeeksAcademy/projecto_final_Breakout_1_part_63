@@ -1,6 +1,7 @@
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
+from flask_jwt_extended import jwt_required, get_jwt_identity
 import resend
 from flask_swagger import swagger
 from googleapiclient.discovery import build
@@ -301,6 +302,64 @@ def delete_reading(reading_id):
     db.session.commit()
 
     return jsonify(f'Se ha eliminado correctamente la lectura {reading.title} '), 200
+
+#ENDPOINT READINGS BUSCAR LECTURA POR USER ID EN GRUPO PARA ESTUDIANTE
+
+@app.route('/student/readings', methods=['GET'])
+@jwt_required()
+def get_student_readings():
+    
+
+    # para id desde el token
+    student_id = get_jwt_identity()
+
+    # filtrar id en grupos
+    student_groups = Students_Group.query.filter(
+        Students_Group.user_id == student_id
+    ).all()
+
+    if not student_groups:
+        return jsonify("Usuario no encontrado"), 400
+
+    # los ids de grupos
+    group_ids = []
+    for sg in student_groups:
+        group_ids.append(sg.group_id)
+
+    #  lecturas de ids de grupos
+    readings = Reading.query.filter(
+        Reading.group_id.in_(group_ids)
+    ).all()
+
+   
+    readings_serialized = []
+    for reading in readings:
+        readings_serialized.append(reading.serialize())
+
+ 
+    return jsonify(readings_serialized), 200
+
+#ENDPOINT READINGS BUSCAR LECTURA POR USER ID PARA TEACHERS
+
+@app.route('/teacher/readings', methods=['GET'])
+@jwt_required()
+def get_teacher_readings():
+
+    # id del profesor desde el token
+    teacher_id = get_jwt_identity()
+
+    # traer lecturas creadas por ese profesor
+    readings = Reading.query.filter(
+        Reading.teacher_id == teacher_id
+    ).all()
+
+    readings_serialized = []
+    for reading in readings:
+        readings_serialized.append(reading.serialize())
+
+    return jsonify(readings_serialized), 200
+
+
 
 
 #                  ENDPOINT REGISTER

@@ -29,6 +29,7 @@ export default function storeReducer(store, action = {}) {
       };
 
     case "LOGIN_SUCCESS":
+
       return {
         ...store,
         user: action.payload.user,

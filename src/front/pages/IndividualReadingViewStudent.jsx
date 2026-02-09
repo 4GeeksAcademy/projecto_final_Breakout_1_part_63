@@ -66,12 +66,17 @@ export const IndividualReadingViewStudent = () => {
 
             <hr />
 
-<h5>Instrucciones de lectura:</h5>
+<h3>Instrucciones de lectura:</h3>
             <p className="mt-3">
                 {reading.content}
             </p>
 
-            <Link to="/readings" className="btn btn-success mt-4 mb-3">
+            <h5>Liga para descargar archivo de lectura:</h5>
+            <p className="mt-3">
+                {reading.reading_url}
+            </p>
+
+            <Link to="/readings/student" className="btn btn-success mt-4 mb-3">
                 Volver a todas las lecturas
             </Link>
 

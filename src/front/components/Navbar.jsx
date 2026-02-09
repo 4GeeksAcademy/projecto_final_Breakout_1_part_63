@@ -61,8 +61,16 @@ export const Navbar = () => {
 									Crear Tarea
 								</button>
 							</Link>
+
+							<Link to="/teacher/readings">
+								<button className="btn btn-info ms-2">
+									Ver lecturas
+								</button>
+							</Link>
 						</>
 					)}
+
+					
 
 					{isAuthenticated && role === "ADMIN" && (
 						<>
