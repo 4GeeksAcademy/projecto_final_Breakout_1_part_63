@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import lecturaslogo from "../assets/img/lecturaslogo.png";
 
 export const ReadingsViewStudents = () => {
 
     const { store, dispatch } = useGlobalReducer();
-
+    const navigate = useNavigate();
     const [err, setErr] = useState(null);
     const [statusMap, setStatusMap] = useState({});
 
-  
+
     const [currentPage, setCurrentPage] = useState(1);
 
-    
+
     const readingsPerPage = 6;
 
     useEffect(() => {
@@ -55,17 +55,17 @@ export const ReadingsViewStudents = () => {
 
 
     const indexOfLast = currentPage * readingsPerPage;
-const indexOfFirst = indexOfLast - readingsPerPage;
+    const indexOfFirst = indexOfLast - readingsPerPage;
 
 
-const sortedReadings = [...(store.readings || [])].sort(
-    (a, b) => b.id - a.id
-);
+    const sortedReadings = [...(store.readings || [])].sort(
+        (a, b) => b.id - a.id
+    );
 
 
-const currentReadings = sortedReadings.slice(indexOfFirst, indexOfLast);
+    const currentReadings = sortedReadings.slice(indexOfFirst, indexOfLast);
 
-const totalPages = Math.ceil(sortedReadings.length / readingsPerPage);
+    const totalPages = Math.ceil(sortedReadings.length / readingsPerPage);
 
 
 
@@ -98,8 +98,8 @@ const totalPages = Math.ceil(sortedReadings.length / readingsPerPage);
                                 </h5>
 
                                 <Link to={`/reading/${reading.id}`} className="btn btn-primary me-2">
-    Revisar lectura
-</Link>
+                                    Revisar lectura
+                                </Link>
 
                                 <button
                                     className={`btn ${statusMap[reading.id] ? "btn-success" : "btn-outline-secondary"}`}
@@ -117,12 +117,18 @@ const totalPages = Math.ceil(sortedReadings.length / readingsPerPage);
                 ))}
 
             </div>
+ <button
+        type="button"
+        className="btn btn-sm btn-outline-secondary mb-3"
+        onClick={() => navigate(-1)}
+      >
+        ← Volver
+      </button>
 
-            
             <div className="d-flex justify-content-center mt-3 mb-3">
 
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-                 <button
+                    <button
                         key={page}
                         className={`btn me-2 ${page === currentPage ? "btn-dark" : "btn-outline-dark"}`}
                         onClick={() => setCurrentPage(page)}

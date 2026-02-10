@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import tareaslogo from "../assets/img/tareaslogo.png";
 import { RandomImgTarea } from "../components/RandomImgTarea";
@@ -10,6 +10,7 @@ import { RandomImgTarea } from "../components/RandomImgTarea";
 export const TodoViewTeacher = () => {
 
     const { store, dispatch } = useGlobalReducer();
+    const navigate = useNavigate();
 
     const [err, setErr] = useState(null);
     const [statusMap, setStatusMap] = useState({});
@@ -93,7 +94,7 @@ export const TodoViewTeacher = () => {
                                 seed={todo.id}
                                 className="card-img-top"
                                 alt="tarea"
-                                
+
                             />
 
                             <div className="card-body d-flex flex-column w-100">
@@ -102,11 +103,15 @@ export const TodoViewTeacher = () => {
                                     {todo.title}
                                 </h5>
 
-                                <Link to={`/homeTeacher/todos/${todo.id}/submissions`} className="btn btn-primary me-2 w-25  ">
+                                <Link
+                                    to={`/homeTeacher/todos/${todo.id}/submissions`}
+                                    className="btn btn-primary me-2 flex-shrink-0"
+                                    style={{ width: "140px" }}
+                                >
                                     Calificar
-                                </Link> 
+                                </Link>
 
-                         {/*       <button
+                                {/*       <button
                                     className={`btn ${statusMap[todo.id] ? "btn-success" : "btn-outline-secondary"}`}
                                     onClick={() => toggleStatus(todo.id)}
                                 >
@@ -122,7 +127,13 @@ export const TodoViewTeacher = () => {
                 ))}
 
             </div>
-
+            <button
+                type="button"
+                className="btn btn-sm btn-outline-secondary mb-3"
+                onClick={() => navigate(-1)}
+            >
+                ← Volver
+            </button>
 
             <div className="d-flex justify-content-center mt-3 mb-3">
 
