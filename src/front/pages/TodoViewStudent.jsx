@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
-import tareaslogo from "../assets/img/tareaslogo.png";
 import { RandomImgTarea } from "../components/RandomImgTarea";
 
 
@@ -57,6 +56,33 @@ export const TodoViewStudent = () => {
         }));
     };
 
+    useEffect(() => {
+                const fetchMe = async () => {
+                    try {
+                        const backend = import.meta.env.VITE_BACKEND_URL;
+                        const resp = await fetch(`${backend}/me`, {
+                            headers: {
+                                "Content-Type": "application/json",
+                                Authorization: `Bearer ${localStorage.getItem("token")}`,
+                            },
+                        });
+        
+                        if (!resp.ok) throw new Error("Error obteniendo usuario");
+        
+                        const data = await resp.json();
+        
+                        dispatch({
+                            type: "SET_CURRENT_USER",
+                            payload: data,
+                        });
+                    } catch (error) {
+                        console.error("Error fetching current user:", error);
+                    }
+                };
+        
+                fetchMe();
+            }, [dispatch]);
+
 
     const indexOfLast = currentPage * todosPerPage;
     const indexOfFirst = indexOfLast - todosPerPage;
@@ -77,7 +103,7 @@ export const TodoViewStudent = () => {
 
         <div className="container mt-5">
 
-            <h1 className="mb-4">Tus tareas, Vicente</h1>
+            <h1 className="mb-4">Tus tareas, <span className="text-success"></span>{store.user?.name || "Estudiante"}<span></span> </h1>
 
             {err && <div className="alert alert-danger">{err}</div>}
 

@@ -292,7 +292,7 @@ export const CreateReadings = () => {
                         className="form-control ctf-input"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
-                        placeholder="Título de tarea"
+                        placeholder="Título de la lectura"
                         required
                       />
                     </div>

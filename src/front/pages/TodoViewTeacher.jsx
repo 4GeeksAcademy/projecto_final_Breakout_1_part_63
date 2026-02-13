@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
-import tareaslogo from "../assets/img/tareaslogo.png";
 import { RandomImgTarea } from "../components/RandomImgTarea";
 
 
@@ -71,6 +70,7 @@ export const TodoViewTeacher = () => {
 
     const totalPages = Math.ceil(sortedTodos.length / todosPerPage);
 
+    
 
 
     return (
